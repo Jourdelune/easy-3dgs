@@ -8,6 +8,7 @@ authors = [
 ]
 requires-python = ">=3.10"
 dependencies = [
+    "hloc @ git+https://github.com/cvg/Hierarchical-Localization.git",
     "pycolmap>=3.11.1",
 ]
 
@@ -17,10 +18,10 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["easy_3dgs*", "easy_3dgs.third_party.Hierarchical-Localization.hloc*"]
+include = ["easy_3dgs*"]
 
 [tool.setuptools.package-data]
-"easy_3dgs" = ["third_party/Hierarchical-Localization/hloc/third_party/*"]
+"easy_3dgs" = ["third_party/*"]
 
 [dependency-groups]
 dev = [
