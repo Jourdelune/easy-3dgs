@@ -8,7 +8,6 @@ authors = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "hloc",
     "pycolmap>=3.11.1",
 ]
 
@@ -18,13 +17,10 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["easy_3dgs*", "easy_3dgs.third_party.Hierarchical-Localization.hloc*"]
 
 [tool.setuptools.package-data]
-"easy_3dgs" = ["third_party/Hierarchical-Localization/third_party/SuperGluePretrainedNetwork/models/weights/*.pth"]
-
-[tool.uv.sources]
-hloc = { path = "src/easy_3dgs/third_party/Hierarchical-Localization" }
-easy-3dgs = { workspace = true }
+"easy_3dgs" = ["third_party/Hierarchical-Localization/hloc/third_party/*"]
 
 [dependency-groups]
 dev = [

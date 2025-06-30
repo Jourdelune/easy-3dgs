@@ -17,10 +17,19 @@ A Python library for 3D Gaussian Splatting, designed to be easy to use and exten
 
 ### Installation
 
+#### Install from PyPI
+You can install the library directly from PyPI using pip:
+
+```bash
+pip install easy-3dgs
+```
+
+#### Install from Source
+
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/easy-3dgs.git
+   git clone --recursive https://github.com/your-username/easy-3dgs.git
    cd easy-3dgs
    ```
 
@@ -87,6 +96,10 @@ The project is organized as follows:
 - **`src/easy_3dgs/pipeline`**: Contains the core logic for the reconstruction pipeline.
 - **`src/easy_3dgs/pipeline/orchestrator.py`**: The main entry point for the library, containing the `ReconstructionPipeline` class.
 - **`src/easy_3dgs/third_party`**: Contains third-party libraries, such as Hierarchical Localization.
+
+## To Do 
+
+- [ ] Add 3d Gaussian Splatting
 
 ## Contributing
 
