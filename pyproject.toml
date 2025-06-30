@@ -1,0 +1,26 @@
+[project]
+name = "easy-3dgs"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "jourdelune", email = "jourdelune863@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "hloc",
+    "pycolmap>=3.11.1",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv.sources]
+hloc = { path = "src/easy_3dgs/third_party/Hierarchical-Localization" }
+easy-3dgs = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "easy-3dgs",
+]

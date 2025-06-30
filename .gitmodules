@@ -1,6 +1,3 @@
-[submodule "src/Hierarchical-Localization"]
-	path = src/Hierarchical-Localization
-	url = https://github.com/cvg/Hierarchical-Localization.git
 [submodule "src/easy_3dgs/third_party/Hierarchical-Localization"]
 	path = src/easy_3dgs/third_party/Hierarchical-Localization
 	url = https://github.com/cvg/Hierarchical-Localization.git
