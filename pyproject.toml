@@ -1,7 +1,7 @@
 [project]
 name = "easy-3dgs"
 version = "0.1.0"
-description = "Add your description here"
+description = "A Python library that includes an end-to-end 3D Gaussian splatting pipeline without requiring the compilation of hundreds of dependencies." 
 readme = "README.md"
 authors = [
     { name = "jourdelune", email = "jourdelune863@gmail.com" }
