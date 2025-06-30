@@ -30,7 +30,7 @@ pip install git+https://github.com/cvg/Hierarchical-Localization.git
 1. **Clone the repository:**
 
    ```bash
-   git clone --recursive https://github.com/your-username/easy-3dgs.git
+   git clone --recursive https://github.com/Jourdelune/easy-3dgs.git
    cd easy-3dgs
    ```
 
