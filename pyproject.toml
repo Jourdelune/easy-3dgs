@@ -16,6 +16,12 @@ dependencies = [
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"easy_3dgs" = ["third_party/Hierarchical-Localization/third_party/SuperGluePretrainedNetwork/models/weights/*.pth"]
+
 [tool.uv.sources]
 hloc = { path = "src/easy_3dgs/third_party/Hierarchical-Localization" }
 easy-3dgs = { workspace = true }
