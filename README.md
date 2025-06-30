@@ -22,6 +22,7 @@ You can install the library directly from PyPI using pip:
 
 ```bash
 pip install easy-3dgs
+pip install git+https://github.com/cvg/Hierarchical-Localization.git
 ```
 
 #### Install from Source
@@ -36,7 +37,8 @@ pip install easy-3dgs
 2. **Install dependencies:**
 
    ```bash
-   pip install .
+   pip install -e .
+   pip install git+https://github.com/cvg/Hierarchical-Localization.git
    ```
 
 ### Usage
