@@ -21,7 +21,7 @@ A Python library for 3D Gaussian Splatting, designed to be easy to use and exten
 You can install the library directly from PyPI using pip:
 
 ```bash
-pip install easy-3dgs
+pip install git+https://github.com/Jourdelune/easy-3dgs.git
 pip install git+https://github.com/cvg/Hierarchical-Localization.git
 ```
 
