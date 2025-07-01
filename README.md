@@ -17,15 +17,18 @@ A Python library for 3D Gaussian Splatting, designed to be easy to use and exten
 
 ### Installation
 
-#### Install from PyPI
-You can install the library directly from PyPI using pip:
+#### Install from Source
+You can install the library directly using pip:
 
 ```bash
 pip install git+https://github.com/Jourdelune/easy-3dgs.git
 pip install git+https://github.com/cvg/Hierarchical-Localization.git
 ```
 
-#### Install from Source
+The project can't be installed from PyPI because it requires the `Hierarchical-Localization` library, which containing weights that 
+are too large to be included in a PyPI package and I don't want to write my own package for these dependencies.
+
+#### Install for Development
 
 1. **Clone the repository:**
 
