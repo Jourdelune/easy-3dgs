@@ -16,7 +16,7 @@ authors = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "pycolmap>=3.11.1",
+    "pycolmap==3.11.1",
 ]
 
 [tool.setuptools.packages.find]
