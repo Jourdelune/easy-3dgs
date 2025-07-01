@@ -1,3 +1,11 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm.build]
+run-setuptools = true
+sdist-excludes = ["src/easy_3dgs/third_party/"]
+
 [project]
 name = "easy-3dgs"
 version = "0.1.0"
@@ -11,17 +19,12 @@ dependencies = [
     "pycolmap>=3.11.1",
 ]
 
-[build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
-
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["easy_3dgs*"]
-exclude = ["easy_3dgs/**/__pycache__"]
-
-[tool.setuptools.package-data]
-"easy_3dgs" = ["third_party/*"]
+exclude = [
+    "easy_3dgs.third_party*",
+]
 
 [dependency-groups]
 dev = [

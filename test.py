@@ -3,7 +3,7 @@ import os
 
 import sys
 
-
+from easy_3dgs.pipeline import ReconstructionPipeline
 
 from SuperGluePretrainedNetwork.models.superglue import SuperGlue as SG  # noqa: E402
 
