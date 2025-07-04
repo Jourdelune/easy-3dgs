@@ -1,5 +1,6 @@
 # run_pipeline.py
 import logging
+import os
 from pathlib import Path
 
 from hloc import extract_features, match_features
@@ -40,6 +41,8 @@ gaussian_splatting_pipeline = GaussianSplattingPipeline(
     strategy_type="mcmc",
 )
 
-gaussian_splatting_results_dir = gaussian_splatting_pipeline.train(output_directory)
+gaussian_splatting_results_dir = gaussian_splatting_pipeline.train(
+    output_directory / "sfm"
+)
 
 logging.info(f"Gaussian Splatting results in: {gaussian_splatting_results_dir}")
