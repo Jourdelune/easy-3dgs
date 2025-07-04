@@ -1,6 +1,5 @@
 # run_pipeline.py
 import logging
-import os
 from pathlib import Path
 
 from hloc import extract_features, match_features

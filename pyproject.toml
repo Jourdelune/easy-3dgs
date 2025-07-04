@@ -24,7 +24,7 @@ dependencies = [
     "pdm>=2.25.4",
     "pdm-backend>=2.4.5",
     "Pillow>=10.0.0",
-    "pycolmap==3.11.1",
+    "pycolmap==3.10.0",
     "pycolmap-ext",
     "pytorch-msssim>=1.0.0",
     "pyyaml>=6.0.2",
