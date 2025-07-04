@@ -45,6 +45,7 @@ The project can't be installed from PyPI because it requires dependencies that a
 ### Usage
 
 The main entry point for the library is the `ReconstructionPipeline` and `GaussianSplattingPipeline` classes, which orchestrate the entire reconstruction and Gaussian Splatting process.
+Expect the first run to take some time because `gsplat` will be compiled; subsequent runs will be faster.
 
 ```python
 # run_pipeline.py
