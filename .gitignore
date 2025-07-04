@@ -172,3 +172,4 @@ src/easy_3dgs/py.typed
 test.py
 results/
 test*.py
+convert.py

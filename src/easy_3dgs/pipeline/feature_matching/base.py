@@ -2,8 +2,18 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
 
+
 class AbstractFeatureMatcher(ABC):
     """Abstract class to match features between image pairs."""
+
     @abstractmethod
     def run(self, pairs_path: Path, feature_output_name: str, output_dir: Path):
+        pass
+
+
+class AbstractDenseFeatureMatcher(ABC):
+    """Abstract class to match features between image pairs."""
+
+    @abstractmethod
+    def run(self, pairs_path: Path, image_dir: str, output_dir: Path):
         pass

@@ -7,7 +7,7 @@ from typing import Optional, Type
 from .feature_extraction import HlocFeatureExtractor
 from .feature_extraction.base import AbstractFeatureExtractor
 from .feature_matching import HlocFeatureMatcher
-from .feature_matching.base import AbstractFeatureMatcher
+from .feature_matching.base import AbstractDenseFeatureMatcher, AbstractFeatureMatcher
 from .feature_retrieval import HlocFeatureRetriever
 from .feature_retrieval.base import AbstractFeatureRetriever
 from .image_undistortion import PycolmapImageUndistorter
@@ -32,7 +32,9 @@ class ReconstructionPipeline:
         extractor_class: Optional[
             Type[AbstractFeatureExtractor]
         ] = HlocFeatureExtractor,
-        matcher_class: Optional[Type[AbstractFeatureMatcher]] = HlocFeatureMatcher,
+        matcher_class: Optional[
+            Type[AbstractFeatureMatcher | AbstractDenseFeatureMatcher]
+        ] = HlocFeatureMatcher,
         reconstructor_class: Optional[Type[AbstractReconstructor]] = HlocReconstructor,
         undistorter_class: Optional[
             Type[AbstractImageUndistorter]
@@ -139,9 +141,14 @@ class ReconstructionPipeline:
             )
 
         if self.matcher:
-            match_path = self.matcher.run(
-                sfm_pairs_path, self.feature_conf["output"], output_dir
-            )
+            if isinstance(self.matcher, AbstractDenseFeatureMatcher):
+                feature_path, match_path = self.matcher.run(
+                    sfm_pairs_path, image_dir, output_dir
+                )
+            else:
+                match_path = self.matcher.run(
+                    sfm_pairs_path, self.feature_conf["output"], output_dir
+                )
         elif not match_path:
             raise ValueError(
                 "Matcher step is skipped, but 'match_path' was not provided."
