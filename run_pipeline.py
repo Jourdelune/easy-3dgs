@@ -27,4 +27,4 @@ pipeline = ReconstructionPipeline(
     num_matched_pairs=5,
     mapper_options={"ba_global_function_tolerance": 0.000001},
 )
-pipeline.run(image_directory, output_directory)
+pipeline.run(image_directory, output_directory, resize=True)

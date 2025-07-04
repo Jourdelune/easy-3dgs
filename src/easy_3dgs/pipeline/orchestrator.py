@@ -10,6 +10,7 @@ from .feature_extraction import HlocFeatureExtractor
 from .feature_matching import HlocFeatureMatcher
 from .reconstruction import HlocReconstructor
 from .image_undistortion import PycolmapImageUndistorter
+from .resizer_image import ImageMagickResizer
 
 
 class ReconstructionPipeline:
@@ -38,8 +39,15 @@ class ReconstructionPipeline:
         self.matcher = HlocFeatureMatcher(self.matcher_conf)
         self.reconstructor = HlocReconstructor()
         self.undistorter = PycolmapImageUndistorter()
+        self.resizer = ImageMagickResizer()
 
-    def run(self, image_dir: Path, output_dir: Path, clean_output: bool = True):
+    def run(
+        self,
+        image_dir: Path,
+        output_dir: Path,
+        clean_output: bool = True,
+        resize: bool = False,
+    ):
         """
         Executes the full reconstruction pipeline.
 
@@ -47,6 +55,7 @@ class ReconstructionPipeline:
             image_dir (Path): The directory containing the input images.
             output_dir (Path): The directory where results will be saved.
             clean_output (bool): If True, cleans the output directory before starting.
+            resize (bool): If True, resizes the images.
         """
         if not image_dir.exists() or not image_dir.is_dir():
             raise FileNotFoundError(f"Image directory '{image_dir}' does not exist.")
@@ -79,6 +88,9 @@ class ReconstructionPipeline:
             self.mapper_options,
         )
         self.undistorter.run(sfm_dir, image_dir)
+
+        if resize:
+            self.resizer.main(sfm_dir, [2, 4, 8])
 
         logging.info(f"\nPipeline finished. Results in: {sfm_dir}")
         return sfm_dir

@@ -28,7 +28,7 @@ from torch.utils.tensorboard import SummaryWriter
 from torchmetrics.image import PeakSignalNoiseRatio, StructuralSimilarityIndexMeasure
 from torchmetrics.image.lpip import LearnedPerceptualImagePatchSimilarity
 from typing_extensions import Literal, assert_never
-from easy_3dgs.gs.utils import (
+from easy_3dgs.pipeline.gaussian_splatting.utils import (
     AppearanceOptModule,
     CameraOptModule,
     knn,

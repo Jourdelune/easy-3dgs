@@ -11,7 +11,7 @@ from pycolmap_ext import SceneManager
 from tqdm import tqdm
 from typing_extensions import assert_never
 
-from easy_3dgs.gs.datasets.normalize import (
+from easy_3dgs.pipeline.gaussian_splatting.datasets.normalize import (
     align_principal_axes,
     similarity_from_cameras,
     transform_cameras,
