@@ -48,13 +48,15 @@ The main entry point for the library is the `ReconstructionPipeline` and `Gaussi
 Expect the first run to take some time because `gsplat` will be compiled; subsequent runs will be faster.
 
 ```python
-# run_pipeline.py
 import logging
 from pathlib import Path
 
-from hloc import extract_features, match_features
+from hloc import extract_features, match_dense
 
 from easy_3dgs.pipeline import GaussianSplattingPipeline, ReconstructionPipeline
+from easy_3dgs.pipeline.feature_matching.hloc_implementation import (
+    HlocDenseFeatureMatcher,
+)
 from easy_3dgs.pipeline.resizer_image.pillow_implementation import PillowResizer
 
 # Configure logging
@@ -63,17 +65,17 @@ logging.basicConfig(
 )
 
 
-image_directory = Path("/path/to/your/images")
+image_directory = Path("PATH_TO_YOUR_IMAGES")  # Replace with your image directory
 output_directory = Path("outputs/reconstruction")
 
 retrieval_config = extract_features.confs["netvlad"]
-feature_config = extract_features.confs["superpoint_aachen"]
-matcher_config = match_features.confs["superpoint+lightglue"]
+matcher_config = match_dense.confs["loftr_superpoint"]
 
 reconstruction_pipeline = ReconstructionPipeline(
     resizer_class=PillowResizer,
+    extractor_class=None,  # No feature extraction step
+    matcher_class=HlocDenseFeatureMatcher,
     retrieval_conf=retrieval_config,
-    feature_conf=feature_config,
     matcher_conf=matcher_config,
     num_matched_pairs=5,
     mapper_options={"ba_global_function_tolerance": 0.000001},
@@ -84,10 +86,7 @@ reconstruction_pipeline.run(image_directory, output_directory, resize=True)
 gaussian_splatting_pipeline = GaussianSplattingPipeline(
     data_factor=4,
     result_dir="./results/",
-    antialiased=True,
-    with_ut=True,
-    with_eval3d=True,
-    strategy_type="mcmc",
+    strategy_type="mcmc",  # or "default" for default strategy, there are much more options available (see the implementation of the class for more details)
 )
 
 gaussian_splatting_results_dir = gaussian_splatting_pipeline.train(
@@ -97,7 +96,7 @@ gaussian_splatting_results_dir = gaussian_splatting_pipeline.train(
 logging.info(f"Gaussian Splatting results in: {gaussian_splatting_results_dir}")
 ```
 
-There ares also example scripts in the `examples` directory that demonstrate how to use the library for different tasks, such as dense reconstruction.
+There are also example scripts in the `examples` directory that demonstrate how to use the library for different tasks, such as dense reconstruction.
 
 ## Project Structure
 

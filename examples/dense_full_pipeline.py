@@ -23,7 +23,6 @@ image_directory = Path("PATH_TO_YOUR_IMAGES")  # Replace with your image directo
 output_directory = Path("outputs/reconstruction")
 
 retrieval_config = extract_features.confs["netvlad"]
-feature_config = extract_features.confs["superpoint_aachen"]
 matcher_config = match_dense.confs["loftr_superpoint"]
 
 reconstruction_pipeline = ReconstructionPipeline(
@@ -31,7 +30,6 @@ reconstruction_pipeline = ReconstructionPipeline(
     extractor_class=None,  # No feature extraction step
     matcher_class=HlocDenseFeatureMatcher,
     retrieval_conf=retrieval_config,
-    feature_conf=feature_config,
     matcher_conf=matcher_config,
     num_matched_pairs=5,
     mapper_options={"ba_global_function_tolerance": 0.000001},
@@ -42,7 +40,7 @@ reconstruction_pipeline.run(image_directory, output_directory, resize=True)
 gaussian_splatting_pipeline = GaussianSplattingPipeline(
     data_factor=4,
     result_dir="./results/",
-    strategy_type="mcmc",  # or "mcmc" for MCMC strategy
+    strategy_type="mcmc",  # or "default" for default strategy, there are much more options available (see the implementation of the class for more details)
 )
 
 gaussian_splatting_results_dir = gaussian_splatting_pipeline.train(
