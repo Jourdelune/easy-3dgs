@@ -135,7 +135,10 @@ class ReconstructionPipeline:
 
         if self.extractor:
             feature_path = self.extractor.run(image_dir, output_dir)
-        elif not feature_path:
+        elif not feature_path and (
+            not self.matcher
+            or not isinstance(self.matcher, AbstractDenseFeatureMatcher)
+        ):
             raise ValueError(
                 "Extractor step is skipped, but 'feature_path' was not provided."
             )
