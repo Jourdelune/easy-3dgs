@@ -12,8 +12,8 @@ logging.basicConfig(
 )
 
 
-image_directory = Path("/home/jourdelune/dev/colmap-api/takeout-1-001")
-output_directory = Path("outputs/sfm_pipeline_refactored")
+image_directory = Path("/home/jourdelune/Images/colmap/images/")
+output_directory = Path("outputs/reconstruction")
 
 retrieval_config = extract_features.confs["netvlad"]
 feature_config = extract_features.confs["superpoint_aachen"]

@@ -16,7 +16,24 @@ authors = [
 ]
 requires-python = ">=3.10"
 dependencies = [
+    "gsplat>=1.5.2",
+    "hloc",
+    "imageio>=2.37.0",
+    "nerfview>=0.1.3",
+    "opencv-python>=4.11.0.86",
+    "pdm>=2.25.4",
+    "pdm-backend>=2.4.5",
     "pycolmap==3.11.1",
+    "pycolmap-ext",
+    "pytorch-msssim>=1.0.0",
+    "pyyaml>=6.0.2",
+    "scikit-learn>=1.7.0",
+    "splines>=0.3.3",
+    "tensorboard>=2.19.0",
+    "torch>=2.7.1",
+    "torchmetrics>=1.7.3",
+    "tyro>=0.9.26",
+    "viser>=0.2.23",
 ]
 
 [tool.setuptools.packages.find]
@@ -25,6 +42,11 @@ include = ["easy_3dgs*"]
 exclude = [
     "easy_3dgs.third_party*",
 ]
+
+[tool.uv.sources]
+easy-3dgs = { workspace = true }
+hloc = { git = "https://github.com/cvg/Hierarchical-Localization.git" }
+pycolmap-ext = { git = "https://github.com/Jourdelune/pycolmap_ext.git" }
 
 [dependency-groups]
 dev = [

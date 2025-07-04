@@ -170,3 +170,5 @@ test.ipynb
 src/easy_3dgs/py.typed
 .pdm-build
 test.py
+results/
+test*.py
