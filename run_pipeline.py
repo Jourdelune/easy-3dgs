@@ -5,6 +5,7 @@ from pathlib import Path
 from hloc import extract_features, match_features
 
 from easy_3dgs.pipeline import ReconstructionPipeline
+from easy_3dgs.pipeline.resizer_image import ImageMagickResizer
 
 # Configure logging
 logging.basicConfig(
@@ -19,12 +20,16 @@ retrieval_config = extract_features.confs["netvlad"]
 feature_config = extract_features.confs["superpoint_aachen"]
 matcher_config = match_features.confs["superpoint+lightglue"]
 
-# 3. Create and run the pipeline
+# You can now customize the pipeline by passing different classes or None to skip steps.
+# Example: To skip feature retrieval, set `retriever_class=None` and provide a `retrieval_path` to the `run` method.
 pipeline = ReconstructionPipeline(
+    resizer_class=ImageMagickResizer,
     retrieval_conf=retrieval_config,
     feature_conf=feature_config,
     matcher_conf=matcher_config,
     num_matched_pairs=5,
     mapper_options={"ba_global_function_tolerance": 0.000001},
 )
+
+# Run the full pipeline
 pipeline.run(image_directory, output_directory, resize=True)
