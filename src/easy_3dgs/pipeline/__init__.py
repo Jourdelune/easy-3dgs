@@ -1,2 +1,2 @@
-# src/easy_3dgs/pipeline/__init__.py
 from .orchestrator import ReconstructionPipeline
+from .gaussian_splatting_pipeline import GaussianSplattingPipeline

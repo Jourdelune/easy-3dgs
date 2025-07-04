@@ -15,12 +15,13 @@ import tqdm
 import tyro
 import viser
 import yaml
-from datasets.colmap import Dataset, Parser
-from datasets.traj import (
-    generate_ellipse_path_z,
-    generate_interpolated_path,
-    generate_spiral_path,
-)
+from gsplat import export_splats
+from gsplat.compression import PngCompression
+from gsplat.distributed import cli
+from gsplat.optimizers import SelectiveAdam
+from gsplat.rendering import rasterization
+from gsplat.strategy import DefaultStrategy, MCMCStrategy
+from nerfview import CameraState, RenderTabState, apply_float_colormap
 from pytorch_msssim import ssim
 from torch import Tensor
 from torch.nn.parallel import DistributedDataParallel as DDP
@@ -28,6 +29,7 @@ from torch.utils.tensorboard import SummaryWriter
 from torchmetrics.image import PeakSignalNoiseRatio, StructuralSimilarityIndexMeasure
 from torchmetrics.image.lpip import LearnedPerceptualImagePatchSimilarity
 from typing_extensions import Literal, assert_never
+
 from easy_3dgs.pipeline.gaussian_splatting.utils import (
     AppearanceOptModule,
     CameraOptModule,
@@ -36,14 +38,13 @@ from easy_3dgs.pipeline.gaussian_splatting.utils import (
     set_random_seed,
 )
 
-from gsplat import export_splats
-from gsplat.compression import PngCompression
-from gsplat.distributed import cli
-from gsplat.optimizers import SelectiveAdam
-from gsplat.rendering import rasterization
-from gsplat.strategy import DefaultStrategy, MCMCStrategy
-from gsplat_viewer import GsplatViewer, GsplatRenderTabState
-from nerfview import CameraState, RenderTabState, apply_float_colormap
+from .datasets.colmap import Dataset, Parser
+from .datasets.traj import (
+    generate_ellipse_path_z,
+    generate_interpolated_path,
+    generate_spiral_path,
+)
+from .gsplat_viewer import GsplatRenderTabState, GsplatViewer
 
 
 @dataclass
