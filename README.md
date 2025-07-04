@@ -97,6 +97,8 @@ gaussian_splatting_results_dir = gaussian_splatting_pipeline.train(
 logging.info(f"Gaussian Splatting results in: {gaussian_splatting_results_dir}")
 ```
 
+There ares also example scripts in the `examples` directory that demonstrate how to use the library for different tasks, such as dense reconstruction.
+
 ## Project Structure
 
 The project is organized as follows:
