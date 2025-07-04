@@ -23,6 +23,7 @@ dependencies = [
     "opencv-python>=4.11.0.86",
     "pdm>=2.25.4",
     "pdm-backend>=2.4.5",
+    "Pillow>=10.0.0",
     "pycolmap==3.11.1",
     "pycolmap-ext",
     "pytorch-msssim>=1.0.0",
