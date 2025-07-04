@@ -113,10 +113,7 @@ class ReconstructionPipeline:
         if self.pair_generator and not sfm_pairs_path:
             sfm_pairs_path = output_dir / f"pairs-{self.retrieval_conf['output']}.txt"
         if self.reconstructor and not sfm_dir:
-            sfm_dir = (
-                output_dir
-                / f"sfm_{self.feature_conf['output']}+{self.matcher_conf['output']}"
-            )
+            sfm_dir = output_dir / f"sfm"
 
         # --- Execute steps in order ---
         if self.retriever:

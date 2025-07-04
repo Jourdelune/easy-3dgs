@@ -1,2 +1,2 @@
-from .orchestrator import ReconstructionPipeline
 from .gaussian_splatting_pipeline import GaussianSplattingPipeline
+from .sfm_pipeline import ReconstructionPipeline
