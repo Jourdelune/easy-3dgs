@@ -4,7 +4,7 @@ build-backend = "pdm.backend"
 
 [tool.pdm.build]
 run-setuptools = true
-sdist-excludes = ["src/easy_3dgs/third_party/"]
+
 
 [project]
 name = "easy-3dgs"
