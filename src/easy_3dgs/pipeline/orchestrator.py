@@ -11,21 +11,25 @@ from .feature_matching import HlocFeatureMatcher
 from .reconstruction import HlocReconstructor
 from .image_undistortion import PycolmapImageUndistorter
 
+
 class ReconstructionPipeline:
     """Orchestrates the entire 3D reconstruction pipeline."""
+
     def __init__(
         self,
         retrieval_conf: dict,
         feature_conf: dict,
         matcher_conf: dict,
         num_matched_pairs: int = 5,
-        mapper_options: dict = None
+        mapper_options: dict = None,
     ):
         self.retrieval_conf = retrieval_conf
         self.feature_conf = feature_conf
         self.matcher_conf = matcher_conf
         self.num_matched_pairs = num_matched_pairs
-        self.mapper_options = mapper_options or {"ba_global_function_tolerance": 0.000001}
+        self.mapper_options = mapper_options or {
+            "ba_global_function_tolerance": 0.000001
+        }
 
         # Instantiate steps with their configurations
         self.retriever = HlocFeatureRetriever(self.retrieval_conf)
@@ -54,14 +58,26 @@ class ReconstructionPipeline:
 
         # Define output paths
         sfm_pairs_path = output_dir / f"pairs-{self.retrieval_conf['output']}.txt"
-        sfm_dir = output_dir / f"sfm_{self.feature_conf['output']}+{self.matcher_conf['output']}"
+        sfm_dir = (
+            output_dir
+            / f"sfm_{self.feature_conf['output']}+{self.matcher_conf['output']}"
+        )
 
         # --- Execute steps in order ---
         retrieval_path = self.retriever.run(image_dir, output_dir)
         self.pair_generator.run(retrieval_path, sfm_pairs_path, self.num_matched_pairs)
         feature_path = self.extractor.run(image_dir, output_dir)
-        match_path = self.matcher.run(sfm_pairs_path, self.feature_conf["output"], output_dir)
-        self.reconstructor.run(sfm_dir, image_dir, sfm_pairs_path, feature_path, match_path, self.mapper_options)
+        match_path = self.matcher.run(
+            sfm_pairs_path, self.feature_conf["output"], output_dir
+        )
+        self.reconstructor.run(
+            sfm_dir,
+            image_dir,
+            sfm_pairs_path,
+            feature_path,
+            match_path,
+            self.mapper_options,
+        )
         self.undistorter.run(sfm_dir, image_dir)
 
         logging.info(f"\nPipeline finished. Results in: {sfm_dir}")

@@ -16,6 +16,6 @@ class PycolmapImageUndistorter(AbstractImageUndistorter):
         pycolmap.undistort_images(
             output_path=sfm_dir,
             image_path=image_dir,
-            input_path=os.path.join(sfm_dir, "models", "0"),
+            input_path=os.path.join(sfm_dir, "sparse/0/"),
         )
         logging.info("Image undistortion completed.")
