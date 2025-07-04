@@ -46,8 +46,8 @@ exclude = [
 
 [tool.uv.sources]
 easy-3dgs = { workspace = true }
-hloc = { git = "https://github.com/cvg/Hierarchical-Localization.git" }
 pycolmap-ext = { git = "https://github.com/Jourdelune/pycolmap_ext.git" }
+hloc = { git = "https://github.com/Jourdelune/Hierarchical-Localization.git" }
 
 [dependency-groups]
 dev = [

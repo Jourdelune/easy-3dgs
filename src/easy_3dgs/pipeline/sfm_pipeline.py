@@ -78,7 +78,6 @@ class ReconstructionPipeline:
         output_dir: Path,
         clean_output: bool = True,
         resize: bool = False,
-        # --- Allow providing paths for skipped steps ---
         retrieval_path: Optional[Path] = None,
         sfm_pairs_path: Optional[Path] = None,
         feature_path: Optional[Path] = None,
