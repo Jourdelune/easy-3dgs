@@ -31,10 +31,11 @@ dependencies = [
     "scikit-learn>=1.7.0",
     "splines>=0.3.3",
     "tensorboard>=2.19.0",
-    "torch>=2.7.1",
+    "torch==2.7.0",
     "torchmetrics>=1.7.3",
     "tyro>=0.9.26",
     "viser>=0.2.23",
+    "click>=7.1,!=8.0.0",
 ]
 
 [tool.setuptools.packages.find]
