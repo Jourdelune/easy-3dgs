@@ -17,7 +17,7 @@ authors = [
 requires-python = ">=3.10"
 dependencies = [
     "gsplat>=1.5.2",
-    "hloc",
+    "hloc @ git+https://github.com/Jourdelune/Hierarchical-Localization.git",
     "imageio>=2.37.0",
     "nerfview",
     "opencv-python>=4.11.0.86",
@@ -25,7 +25,7 @@ dependencies = [
     "pdm-backend>=2.4.5",
     "Pillow>=10.0.0",
     "pycolmap==3.10.0",
-    "pycolmap-ext",
+    "pycolmap-ext @ git+https://github.com/Jourdelune/pycolmap_ext.git",
     "pytorch-msssim>=1.0.0",
     "pyyaml>=6.0.2",
     "scikit-learn>=1.7.0",
@@ -44,10 +44,7 @@ exclude = [
     "easy_3dgs.third_party*",
 ]
 
-[tool.uv.sources]
-easy-3dgs = { workspace = true }
-pycolmap-ext = { git = "https://github.com/Jourdelune/pycolmap_ext.git" }
-hloc = { git = "https://github.com/Jourdelune/Hierarchical-Localization.git" }
+
 
 [dependency-groups]
 dev = [
